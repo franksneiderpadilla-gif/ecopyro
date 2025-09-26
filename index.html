@@ -41,7 +41,6 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      position: relative;
     }
 
     @media (min-width: 600px) {
@@ -49,10 +48,6 @@
         flex-direction: row;
         justify-content: space-between;
       }
-    }
-
-    .logo {
-      text-align: center;
     }
 
     .logo a {
@@ -106,21 +101,21 @@
       margin-bottom: 10px;
     }
 
-    .btn-home .btn {
-      margin-right: 10px;
-      background-color: #007a33;
+    .btn {
+      background: #ff7b00;
       color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 30px;
-      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
       border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
-      font-weight: 500;
     }
 
-    .btn-home .btn:hover {
-      background-color: #005f27;
+    .btn:hover {
+      background: #e66900;
       transform: scale(1.05);
     }
 
@@ -143,17 +138,6 @@
     th {
       background-color: #007a33;
       color: white;
-    }
-
-    .contacto h2, .mision h2, .vision h2 {
-      color: #007a33;
-      text-align: center;
-    }
-
-    .contacto p, .mision p, .vision p {
-      font-size: 1.1em;
-      text-align: justify;
-      line-height: 1.6;
     }
 
     .iconos {
@@ -183,86 +167,103 @@
       box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
     }
 
-    /* --- Carrito --- */
+    /* 🛒 Estilos carrito lateral */
     .carrito-icono {
-      position: relative;
-      cursor: pointer;
-      font-size: 1.5em;
-      margin-left: 20px;
-    }
-
-    .carrito-icono span {
-      background: red;
-      color: white;
-      border-radius: 50%;
-      padding: 3px 8px;
-      font-size: 0.8em;
-      position: absolute;
-      top: -8px;
-      right: -10px;
-    }
-
-    .carrito-ventana {
-      display: none;
-      position: absolute;
-      top: 70px;
+      position: fixed;
+      top: 20px;
       right: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      width: 300px;
-      padding: 15px;
+      background: #ff7b00;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       z-index: 1000;
     }
 
-    .carrito-ventana h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.2em;
-      color: #007a33;
+    .carrito-icono:hover {
+      background: #e66900;
     }
 
-    .carrito-ventana ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .contador {
+      background: red;
+      color: white;
+      font-size: 0.8em;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      right: -5px;
     }
 
-    .carrito-ventana li {
+    .carrito-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .carrito-panel.open {
+      right: 0;
+    }
+
+    .carrito-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 0;
-      border-bottom: 1px solid #ddd;
-      font-size: 0.9em;
+      margin-bottom: 15px;
     }
 
-    .carrito-ventana input {
-      width: 40px;
-      text-align: center;
+    .carrito-header h3 {
+      margin: 0;
+      color: #007a33;
+    }
+
+    .cerrar-carrito {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .carrito-items {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+
+    .carrito-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .carrito-item button {
+      border: none;
+      background: #007a33;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .carrito-item button:hover {
+      background: #005f27;
     }
 
     .carrito-total {
       font-weight: bold;
-      text-align: right;
-      margin-top: 10px;
-    }
-
-    .btn-finalizar {
-      display: block;
-      width: 100%;
-      margin-top: 15px;
-      padding: 10px;
-      background: #007a33;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn-finalizar:hover {
-      background: #005f27;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -283,17 +284,23 @@
         <li><a href="contacto.html">Contáctanos</a></li>
       </ul>
     </nav>
+  </div>
 
-    <!-- Carrito -->
-    <div class="carrito-icono" onclick="toggleCarrito()">
-      🛒 <span id="contador">0</span>
+  <!-- 🛒 Icono Carrito -->
+  <div class="carrito-icono" onclick="toggleCarrito()">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="contador" id="contador">0</span>
+  </div>
+
+  <!-- 🛒 Panel Carrito -->
+  <div class="carrito-panel" id="carritoPanel">
+    <div class="carrito-header">
+      <h3>Tu Carrito</h3>
+      <button class="cerrar-carrito" onclick="toggleCarrito()">✖</button>
     </div>
-    <div class="carrito-ventana" id="ventanaCarrito">
-      <h2>Tu carrito</h2>
-      <ul id="lista-carrito"></ul>
-      <p class="carrito-total">Total: $<span id="total">0</span></p>
-      <button class="btn-finalizar" onclick="finalizarCompra()">✅ Finalizar compra</button>
-    </div>
+    <div class="carrito-items" id="carritoItems"></div>
+    <div class="carrito-total" id="carritoTotal">Total: $0 COP</div>
+    <button class="btn">Finalizar compra</button>
   </div>
 
   <header class="content header" id="inicio">
@@ -351,7 +358,7 @@
     <div class="producto">
       <p>Combustible alternativo producido con pirolisis.</p>
       <p><strong>$12.000 COP / Galón</strong></p>
-      <button class="btn" onclick="agregarAlCarrito('Combustible Ecológico', 12000)">Agregar al carrito</button>
+      <button class="btn" onclick="agregarAlCarrito('Combustible Pirolisis', 12000)">Agregar al carrito</button>
     </div>
   </section>
 
@@ -366,63 +373,55 @@
 
   <script>
     let carrito = [];
-    let total = 0;
+    const carritoPanel = document.getElementById("carritoPanel");
+    const carritoItems = document.getElementById("carritoItems");
+    const carritoTotal = document.getElementById("carritoTotal");
+    const contador = document.getElementById("contador");
+
+    function toggleCarrito() {
+      carritoPanel.classList.toggle("open");
+    }
 
     function agregarAlCarrito(nombre, precio) {
-      let item = carrito.find(p => p.nombre === nombre);
+      let item = carrito.find(i => i.nombre === nombre);
       if (item) {
         item.cantidad++;
       } else {
         carrito.push({ nombre, precio, cantidad: 1 });
       }
-      actualizarCarrito();
+      renderCarrito();
     }
 
-    function actualizarCantidad(index, nuevaCantidad) {
-      carrito[index].cantidad = parseInt(nuevaCantidad);
-      if (carrito[index].cantidad <= 0) {
-        carrito.splice(index, 1);
+    function cambiarCantidad(nombre, delta) {
+      let item = carrito.find(i => i.nombre === nombre);
+      if (item) {
+        item.cantidad += delta;
+        if (item.cantidad <= 0) {
+          carrito = carrito.filter(i => i.nombre !== nombre);
+        }
       }
-      actualizarCarrito();
+      renderCarrito();
     }
 
-    function actualizarCarrito() {
-      const lista = document.getElementById("lista-carrito");
-      const totalElemento = document.getElementById("total");
-      const contador = document.getElementById("contador");
-
-      lista.innerHTML = "";
-      total = 0;
-
-      carrito.forEach((item, index) => {
+    function renderCarrito() {
+      carritoItems.innerHTML = "";
+      let total = 0;
+      carrito.forEach(item => {
         total += item.precio * item.cantidad;
-        const li = document.createElement("li");
-        li.innerHTML = `
-          ${item.nombre} - $${item.precio} 
-          <input type="number" value="${item.cantidad}" min="0" onchange="actualizarCantidad(${index}, this.value)">
+        carritoItems.innerHTML += `
+          <div class="carrito-item">
+            <span>${item.nombre} (${item.cantidad})</span>
+            <div>
+              <button onclick="cambiarCantidad('${item.nombre}', -1)">-</button>
+              <button onclick="cambiarCantidad('${item.nombre}', 1)">+</button>
+            </div>
+            <span>$${(item.precio * item.cantidad).toLocaleString()} COP</span>
+          </div>
         `;
-        lista.appendChild(li);
       });
-
-      totalElemento.textContent = total;
-      contador.textContent = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    }
-
-    function toggleCarrito() {
-      const ventana = document.getElementById("ventanaCarrito");
-      ventana.style.display = ventana.style.display === "block" ? "none" : "block";
-    }
-
-    function finalizarCompra() {
-      if (carrito.length === 0) {
-        alert("Tu carrito está vacío 🛒");
-        return;
-      }
-      alert("Gracias por tu compra 💚\nTotal: $" + total);
-      carrito = [];
-      actualizarCarrito();
-      toggleCarrito();
+      carritoTotal.textContent = "Total: $" + total.toLocaleString() + " COP";
+      contador.textContent = carrito.reduce((acc, i) => acc + i.cantidad, 0);
     }
   </script>
 </body>
-</html>
+</html
